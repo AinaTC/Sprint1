@@ -89,7 +89,7 @@ asynFun();
 Captura tots els errors possibles dels nivells 1 i 2.
 */
 
-async function getNameAndSalary (id){
+async function getNameAndSalary_catch (id){
     try{
         const empl = await getEmployee(id);
         const salari = await getSalary(empl);
@@ -98,11 +98,11 @@ async function getNameAndSalary (id){
         console.log(err.message);
 }}
 
-getNameAndSalary(1);
-getNameAndSalary(10);
-getNameAndSalary('A');
+getNameAndSalary_catch(1);
+getNameAndSalary_catch(10);
+getNameAndSalary_catch('A');
 
-async function asynFun(){
+async function asynFun_catch(){
     try{
         await promFun();
     } catch(err) {
@@ -111,4 +111,4 @@ async function asynFun(){
 }
 
 
-asynFun();
+asynFun_catch();
