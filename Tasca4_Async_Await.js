@@ -33,9 +33,9 @@ let salaries = [{
 const getEmployee = id =>{
     return new Promise((resolve, reject) =>{
         const emp = employees.find(emp => emp.id === id);
-     if(emp){ 
-     resolve(emp);
-     }else {let errmsg= ('id '+id+' not found');
+        if(emp){ 
+        resolve(emp);
+        }else {let errmsg= ('id '+id+' not found');
             reject(errmsg);
            }
     })
