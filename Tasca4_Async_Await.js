@@ -35,8 +35,8 @@ const getEmployee = id =>{
         const emp = employees.find(emp => emp.id === id);
      if(emp){ 
      resolve(emp);
-     }else { console.log('no employee with id '+ id);
-            reject();
+     }else {let errmsg= ('id '+id+' not found');
+            reject(errmsg);
            }
     })
     }
@@ -48,8 +48,8 @@ const getSalary = emp =>{
         if (sal) {   
         const Salary = sal.salary;
         resolve(Salary);
-        }else{ console.log('no salary info available of employee ' + emp.name);
-        reject();
+        }else{ let errmsg = ('no salary available for employee '+emp.name);
+        reject(errmsg);
              }
 })
 }
@@ -103,7 +103,7 @@ async function getNameAndSalary_catch (id){
         const salari = await getSalary(empl);
         console.log(empl.name, salari);
     } catch(err){
-        console.log(err.message);
+        console.log(err);
 }}
 
 getNameAndSalary_catch(1);
@@ -114,7 +114,7 @@ async function asynFun_catch(){
     try{
         await promFun();
     } catch(err) {
-        console.log(err.message);
+        console.log(err);
     }
 }
 
