@@ -5,13 +5,13 @@
 Invoca-la passant-li les dues funcions de manera que imprimeixin un missatge diferent
 depenent de si la Promise es resol o no.*/
 
-const fun = r => Promise.r
+const fun = r => {return new Promise((resolve,reject)=>{
+    if (r>0) {resolve('I am a resolved promise!');}
+    reject('you catched me!');}
+ )}
 
-let reject = () => console.log('Promise rejected');
-let resolve = () => console.log('Promise resolved');
-
-fun(reject());
-fun(resolve());
+fun(1).then(data=>console.log(data));
+fun().catch(data=>console.log(data));
 
 // Nivell 1 Ex 2
 /*
@@ -19,15 +19,16 @@ Crea una arrow function que rebi un paràmetre i una funció callback i li passi
  un missatge o un altre (que s'imprimirà per consola) en funció del paràmetre rebut.
 */
 
-const fun_cb = p => {if(p%2 === 0){
-    console.log(p+' is an even number');
-}
-else if (p%2 === 1){
-    console.log(p+' is an odd number');
-} else(console.log(p + ' is not a number'))
-}
+const fun_cb = p%2;
 
-const fun2 = (par, cb) =>  cb(par);
+const fun2 = (par, cb) =>  {
+    p = cb(par);
+    {if(p === 0){
+    console.log(par+' is an even number');
+    }else if (p === 1){
+    console.log(par+' is an odd number');
+    } else(console.log(par + ' is not a number'))
+    }}
 
 fun2(2,fun_cb);
 fun2(11,fun_cb);
@@ -66,7 +67,10 @@ let salaries = [{
 let getEmployee = id => {
     return new Promise((resolve, reject) =>{
          const emp = employees.find(emp => emp.id === id);
-         resolve(emp)} )
+         if(emp){ resolve(emp)}
+         else {let errmsg= ('id '+id+' not found');
+             reject(errmsg);
+             }} )
  }
 
 getEmployee(2).then(res =>console.log(res));
@@ -80,7 +84,12 @@ Crea una altra arrow function getSalary que rebi com a
 let getSalary = emp =>{
     return new Promise((resolve, reject) => {
         const salary = salaries.find(sal => sal.id === emp.id).salary;
-        resolve(salary);})
+         if(salary){
+        resolve(salary);
+        }else{let errmsg = ('no salary available for employee '+emp.name);
+        reject(errmsg);
+        }
+        })
 }
 
 
@@ -107,9 +116,9 @@ anterior que capturi qualsevol error i el mostri per la consola.
  
  getEmployee(2)
  .then(res => getSalary(res).then(r=> console.log(res, r)))
- .catch(err => console.log(err.message));
+ .catch(err => console.log(err));
  
  
  getEmployee(11)
 .then(res => getSalary(res).then(r=> console.log(res, r)))
- .catch(err => console.log(err.message));
+ .catch(err => console.log(err));
