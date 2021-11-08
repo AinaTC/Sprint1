@@ -33,7 +33,11 @@ let salaries = [{
 const getEmployee = id =>{
     return new Promise((resolve, reject) =>{
         const emp = employees.find(emp => emp.id === id);
-        resolve(emp);
+     if(emp){ 
+     resolve(emp);
+     }else { console.log('no employee with id '+ id);
+            reject();
+           }
     })
     }
 
@@ -41,8 +45,12 @@ const getEmployee = id =>{
 const getSalary = emp =>{ 
     return new Promise((resolve, reject) =>{
         const sal = salaries.find(sal => sal.id === emp.id);
+        if (sal) {   
         const Salary = sal.salary;
         resolve(Salary);
+        }else{ console.log('no salary info available of employee ' + emp.name);
+        reject();
+             }
 })
 }
 
