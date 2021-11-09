@@ -35,7 +35,7 @@ const getEmployee = id =>{
         const emp = employees.find(emp => emp.id === id);
         if(emp){ 
         resolve(emp);
-        }else {let errmsg= ('id '+id+' not found');
+        }else {let errmsg= 'id '+id+' not found';
             reject(errmsg);
            }
     })
@@ -48,7 +48,7 @@ const getSalary = emp =>{
         if (sal) {   
         const Salary = sal.salary;
         resolve(Salary);
-        }else{ let errmsg = ('no salary available for employee '+emp.name);
+        }else{ let errmsg = 'no salary available for employee '+emp.name;
         reject(errmsg);
              }
 })
