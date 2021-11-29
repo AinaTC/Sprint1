@@ -21,13 +21,12 @@ console.log( `${firstName} ${lastName}`);
 
 //Nivell 2 Ex 2
 //Invoca una funció que retorni un valor mitjançant template literals.
-function ex2(Nom, Cognom){
-    let NomUsuari = Nom;
-    let CognomUsuari = Cognom;
-    console.log( `Nom:${NomUsuari}, Cognom:${CognomUsuari}`);
+function sum(n1, n2) {
+    return n1 + n2;
 }
-
-ex2("Aina", "Tubau");
+let a = 1;
+let b = 2;
+console.log(`Suma de ${a} i ${b} és: ${sum(a, b)}`);
 
 // Nivell 3 Ex 1
 /* Crea una matriu de deu funcions i emplena-la mitjançant un bucle 
